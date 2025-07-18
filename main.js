@@ -10,7 +10,7 @@ function operate(operator, firstNum, secondNum) {
         case "-":
             return subtract(firstNum, secondNum);
             break;
-        case "*":
+        case "x":
             return multiply(firstNum, secondNum);
             break;
         case "/":
@@ -83,20 +83,7 @@ function buttonClick(e) {
         //Button contains =
         else {
             if (firstNum !== null && operator != null && operator != null) {
-                switch (operator) {
-                    case "+":
-                        firstNum = add(firstNum, secondNum);
-                        break;
-                    case "-":
-                        firstNum = subtract(firstNum, secondNum);
-                        break;
-                    case "x":
-                        firstNum = multiply(firstNum, secondNum);
-                        break;
-                    case "/":
-                        firstNum = divide(firstNum, secondNum);
-                        break;
-                }
+                firstNum = operate(operator, firstNum, secondNum);
                 displayLog(firstNum);
                 operator = null;
                 secondNum = null;
