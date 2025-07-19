@@ -2,6 +2,7 @@ let firstNum = null;
 let operator = null;
 let secondNum = null;
 let displayingResult = false;
+let decimalPoint = false;
 
 function add(num1, num2) {
     return num1 + num2;
@@ -63,9 +64,14 @@ function buttonClick(e) {
             if (firstNum === null || displayingResult) {
                 firstNum = Number(buttonContent);
                 displayLog(firstNum);
+                displayingResult = false;
             }
             //Append digit to firstNum
             else if (operator === null) {
+                if (decimalPoint) {
+                    firstNum += ".";
+                    decimalPoint = false;
+                }
                 firstNum += buttonContent;
                 firstNum = Number(firstNum);
                 displayLog(firstNum);
@@ -77,10 +83,28 @@ function buttonClick(e) {
             }
             //Append digit to secondNum
             else {
+                if (decimalPoint) {
+                    secondNum += ".";
+                    decimalPoint = false;
+                }
                 secondNum += buttonContent;
                 secondNum = Number(secondNum);
                 displayLog(secondNum);
             }
+        }
+        //Button is decimal point
+        else if (buttonContent === ".") {
+            //Append . to firstNum
+            if (firstNum !== null && operator === null && !String(firstNum).includes(".") && !displayingResult) {
+                decimalPoint = true;
+                display.textContent += ".";
+            }
+            //Append . to secondNum
+            else if (secondNum !== null && !String(secondNum).includes(".")) {
+                decimalPoint = true;
+                display.textContent += ".";
+            }
+
         }
         //Button is Clear
         else if (buttonContent === "Clear") {
