@@ -114,6 +114,38 @@ function buttonClick(e) {
             displayingResult = false;
             displayLog("");
         }
+        //Button is delete
+        else if (buttonContent === "Delete") {
+            console.log("test");
+            if (secondNum !== null) {
+                if (decimalPoint) {
+                        decimalPoint = false;
+                        display.textContent = display.textContent.slice(0, -1);
+                    }
+                else if (String(secondNum).length === 1) {
+                    secondNum = null;
+                    displayLog("");
+                }
+                else {
+                    secondNum = Number(String(secondNum).slice(0, -1));
+                    displayLog(secondNum);
+                }
+            }
+            else if (firstNum !== null && operator === null) {
+                if (decimalPoint) {
+                    decimalPoint = false;
+                    display.textContent = display.textContent.slice(0, -1);
+                }
+                else if (String(firstNum).length === 1) {
+                    firstNum = null;
+                    displayLog("");
+                }
+                else {
+                    firstNum = Number(String(firstNum).slice(0, -1));
+                    displayLog(firstNum);
+                }
+            }
+        }
         //Button is a operator other than =
         else if (validOperator.includes(buttonContent)) {
             //Operator is being added onto an already complete expression
