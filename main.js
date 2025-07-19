@@ -63,7 +63,7 @@ function buttonClick(e) {
         //Button contains a number
         if (validDigit.includes(buttonContent)) {
             //Set firstNum
-            if (firstNum === null || displayResult) {
+            if (firstNum === null || displayingResult) {
                 firstNum = Number(buttonContent);
                 displayLog(firstNum);
             }
@@ -117,9 +117,3 @@ function buttonClick(e) {
 
 
 rows.addEventListener("click", buttonClick);
-
-
-//Add event listeners for each button
-//When button is clicked, get its value through textContent
-//add textcontent to display text content
-
