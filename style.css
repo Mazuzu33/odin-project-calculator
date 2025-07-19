@@ -25,6 +25,7 @@ button {
 }
 
 .display {
+    min-height: 120px;
     flex: 1 0px;
     display: flex;
     justify-content: right;
