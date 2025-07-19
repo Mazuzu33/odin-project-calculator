@@ -1,6 +1,7 @@
 let firstNum = null;
 let operator = null;
 let secondNum = null;
+let displayingResult = false;
 
 function add(num1, num2) {
     return num1 + num2;
@@ -62,7 +63,7 @@ function buttonClick(e) {
         //Button contains a number
         if (validDigit.includes(buttonContent)) {
             //Set firstNum
-            if (firstNum === null) {
+            if (firstNum === null || displayResult) {
                 firstNum = Number(buttonContent);
                 displayLog(firstNum);
             }
@@ -83,6 +84,7 @@ function buttonClick(e) {
             firstNum = null;
             operator = null;
             secondNum = null;
+            displayingResult = false;
             displayLog("");
         }
         //Button contains a operator other than =
@@ -97,6 +99,7 @@ function buttonClick(e) {
             //Operator is being chosen or changed
             else {
                 operator = buttonContent;
+                displayingResult = false;
             }
         }
         //Button contains =
@@ -106,6 +109,7 @@ function buttonClick(e) {
                 displayLog(firstNum);
                 operator = null;
                 secondNum = null;
+                displayingResult = true;
             }
         }
     }
