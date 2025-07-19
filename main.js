@@ -2,6 +2,22 @@ let firstNum = null;
 let operator = null;
 let secondNum = null;
 
+function add(num1, num2) {
+    return num1 + num2;
+}
+
+function subtract(num1, num2) {
+    return num1 - num2;
+}
+
+function multiply(num1, num2) {
+    return num1 * num2;
+}
+
+function divide(num1, num2) {
+   return num1 / num2;
+}
+
 function operate(operator, firstNum, secondNum) {
     switch (operator) {
         case "+":
@@ -20,22 +36,6 @@ function operate(operator, firstNum, secondNum) {
             return "Bad input";
             break;
     }
-}
-
-function add(num1, num2) {
-    return num1 + num2;
-}
-
-function subtract(num1, num2) {
-    return num1 - num2;
-}
-
-function multiply(num1, num2) {
-    return num1 * num2;
-}
-
-function divide(num1, num2) {
-   return num1 / num2;
 }
 
 let display = document.querySelector(".display");
@@ -78,7 +78,17 @@ function buttonClick(e) {
         }
         //Button contains a operator other than =
         else if (validOperator.includes(buttonContent)) {
-            operator = buttonContent;
+            //Operator is being added onto an already complete expression
+            if (secondNum !== null) {
+                firstNum = operate(operator, firstNum, secondNum);
+                displayLog(firstNum);
+                operator = buttonContent;
+                secondNum = null;
+            }
+            //Operator is being chosen or changed
+            else {
+                operator = buttonContent;
+            }
         }
         //Button contains =
         else {
