@@ -15,7 +15,7 @@ function multiply(num1, num2) {
 }
 
 function divide(num1, num2) {
-   return num1 / num2;
+   return num1 / num2 ;
 }
 
 function operate(operator, firstNum, secondNum) {
@@ -44,7 +44,14 @@ let validDigit = "0123456789";
 let validOperator = "+-x/";
 
 function displayLog(num) {
-    display.textContent = num;
+    //Num is a decimal
+    if (num % 1 !== 0) {
+        display.textContent = Math.floor(num * 100000) / 100000;
+        console.log("yo");
+    }
+    else {
+        display.textContent = num;
+    }
 }
 
 function buttonClick(e) {
