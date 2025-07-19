@@ -74,8 +74,13 @@ function buttonClick(e) {
                 displayLog(firstNum);
             }
             //Set secondNum
-            else {
+            else if (secondNum === null) {
                 secondNum = Number(buttonContent)
+                displayLog(secondNum);
+            }
+            else {
+                secondNum = secondNum + buttonContent;
+                secondNum = Number(secondNum);
                 displayLog(secondNum);
             }
         }
