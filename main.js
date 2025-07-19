@@ -19,26 +19,23 @@ function divide(num1, num2) {
     if (num2 === 0) {
         return NaN;
     }
-   return num1 / num2 ;
+    else {
+        return num1 / num2 ;
+    }
 }
 
 function operate(operator, firstNum, secondNum) {
     switch (operator) {
         case "+":
             return add(firstNum, secondNum);
-            break;
         case "-":
             return subtract(firstNum, secondNum);
-            break;
         case "x":
             return multiply(firstNum, secondNum);
-            break;
         case "/":
             return divide(firstNum, secondNum);
-            break;
         default:
             return "Bad input";
-            break;
     }
 }
 
@@ -60,16 +57,16 @@ function displayLog(num) {
 function buttonClick(e) {
     if (e.target.tagName === "BUTTON") {
         buttonContent = e.target.textContent;
-        //Button contains a number
+        //Button is a number
         if (validDigit.includes(buttonContent)) {
             //Set firstNum
             if (firstNum === null || displayingResult) {
                 firstNum = Number(buttonContent);
                 displayLog(firstNum);
             }
-            //Append new digit to firstNum
+            //Append digit to firstNum
             else if (operator === null) {
-                firstNum = firstNum + buttonContent;
+                firstNum += buttonContent;
                 firstNum = Number(firstNum);
                 displayLog(firstNum);
             }
@@ -78,13 +75,14 @@ function buttonClick(e) {
                 secondNum = Number(buttonContent)
                 displayLog(secondNum);
             }
+            //Append digit to secondNum
             else {
-                secondNum = secondNum + buttonContent;
+                secondNum += buttonContent;
                 secondNum = Number(secondNum);
                 displayLog(secondNum);
             }
         }
-        //Button contains Clear
+        //Button is Clear
         else if (buttonContent === "Clear") {
             firstNum = null;
             operator = null;
@@ -92,7 +90,7 @@ function buttonClick(e) {
             displayingResult = false;
             displayLog("");
         }
-        //Button contains a operator other than =
+        //Button is a operator other than =
         else if (validOperator.includes(buttonContent)) {
             //Operator is being added onto an already complete expression
             if (secondNum !== null) {
@@ -102,12 +100,12 @@ function buttonClick(e) {
                 secondNum = null;
             }
             //Operator is being chosen or changed
-            else {
+            else if (firstNum !== null) {
                 operator = buttonContent;
                 displayingResult = false;
             }
         }
-        //Button contains =
+        //Button is =
         else {
             if (firstNum !== null && operator != null && secondNum != null) {
                 firstNum = operate(operator, firstNum, secondNum);
