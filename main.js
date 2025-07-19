@@ -99,7 +99,7 @@ function buttonClick(e) {
         }
         //Button contains =
         else {
-            if (firstNum !== null && operator != null && operator != null) {
+            if (firstNum !== null && operator != null && secondNum != null) {
                 firstNum = operate(operator, firstNum, secondNum);
                 displayLog(firstNum);
                 operator = null;
