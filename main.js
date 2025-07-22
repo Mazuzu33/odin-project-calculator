@@ -57,8 +57,6 @@ function displayLog(num) {
 
 function buttonUse(e) {
     let content = e.key ? e.key : e.target.textContent;
-    console.log(Boolean(e.key));
-    console.log(validDigit.includes(e.key));
     //Button is a number
     if (validDigit.includes(content)) {
         //Set firstNum
@@ -116,7 +114,7 @@ function buttonUse(e) {
         displayLog("");
     }
     //Button is delete
-    else if (content === "Delete") {
+    else if (content === "Delete" || content === "Backspace") {
         console.log("test");
         if (secondNum !== null) {
             if (decimalPoint) {
